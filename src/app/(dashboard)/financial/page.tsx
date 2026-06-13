@@ -129,6 +129,7 @@ export default function FinancialPage() {
 
   useEffect(() => {
     fetchTransactions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [txPage, txStatus, txMethod]);
 
   const fetchTransactions = async () => {

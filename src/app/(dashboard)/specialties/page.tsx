@@ -4,8 +4,15 @@ import { useEffect, useState } from 'react';
 import api from '@/lib/api';
 import { Plus, Edit2, Trash2, X } from 'lucide-react';
 
+interface Specialty {
+  id: string;
+  name: string;
+  iconUrl?: string;
+  isActive: boolean;
+}
+
 export default function SpecialtiesPage() {
-  const [specialties, setSpecialties] = useState<any[]>([]);
+  const [specialties, setSpecialties] = useState<Specialty[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -59,7 +66,7 @@ export default function SpecialtiesPage() {
     }
   };
 
-  const openEditModal = (specialty: any) => {
+  const openEditModal = (specialty: Specialty) => {
     setEditingId(specialty.id);
     setFormData({
       name: specialty.name,
@@ -100,6 +107,7 @@ export default function SpecialtiesPage() {
               <div className="flex justify-between items-start mb-4">
                 <div className="w-12 h-12 bg-surface-alt rounded-xl flex items-center justify-center text-2xl overflow-hidden border border-border">
                   {specialty.iconUrl ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
                     <img src={specialty.iconUrl} alt={specialty.name} className="w-full h-full object-cover" />
                   ) : (
                     '🩺'

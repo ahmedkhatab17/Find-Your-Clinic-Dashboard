@@ -28,8 +28,9 @@ export default function LoginPage() {
       } else {
         setError('Invalid email or password');
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'An error occurred during login.');
+    } catch (err: unknown) {
+      const error = err as { response?: { data?: { message?: string } } };
+      setError(error.response?.data?.message || 'An error occurred during login.');
     } finally {
       setIsLoading(false);
     }
