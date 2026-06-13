@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://findyourclinic.runasp.net/api',
+  baseURL: 'https://findyourclinic.runasp.net/api',
   // baseURL: 'http://localhost:5106/api', // for local  
 
   headers: {
