@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-const api = axios.create({
-  baseURL: '/api/backend',
-  // baseURL: 'http://localhost:5106/api', // for local  
+// Use the Next.js proxy (configured in next.config.mjs) for all environments.
+// This routes requests to http://findyourclinic.runasp.net/api while avoiding Mixed Content errors on Netlify.
+const BASE_URL = '/api/backend';
 
+const api = axios.create({
+  baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
